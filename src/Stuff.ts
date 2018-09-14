@@ -6,6 +6,7 @@ import { NotBlankRule } from './validation/rules/NotBlankRule';
 import { ValidationRule } from './validation/rules/ValidationRule';
 import { ValidateField } from './validation/annotation/ValidateField';
 import { FieldValidationMetadata } from './validation/metadata/FieldValidationMetadata';
+import { EmailRule } from './validation/rules/EmailRule';
 
 // class ClassFieldMetadata {
 //     constructor(public modelName: string, public apiName: string, public type: string) {}
@@ -120,5 +121,6 @@ export class SomeClass {
 
 export function main() {
     const someClass = new SomeClass();
+    console.log(new EmailRule().evaluate('ian@.com', {}, 'email'));
     console.log(ValidationMetadataStore.getFieldValidation(SomeClass));
 }
