@@ -1,4 +1,4 @@
-import { IModel } from './../../IModel';
+import { IModel } from './../../common/IModel';
 import { ValidationResult } from '../ValidationResult';
 import { ValidationRule } from './ValidationRule';
 

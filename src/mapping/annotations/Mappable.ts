@@ -17,7 +17,6 @@ export function Mappable<T extends IConstructor<any>>(constructor: T): T & ICons
             const proxified = new constructor(...args);
             return proxified;
         }
-
     });
     return component;
 }

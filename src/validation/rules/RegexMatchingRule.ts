@@ -1,5 +1,5 @@
 import { ValidationRule } from "./ValidationRule";
-import { IModel } from "../../IModel";
+import { IModel } from "../../common/IModel";
 import { ValidationResult } from "../ValidationResult";
 
 export class RegexMatchingRule extends ValidationRule {

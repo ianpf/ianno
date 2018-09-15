@@ -10,31 +10,6 @@ import { FieldValidationMetadata } from './validation/metadata/FieldValidationMe
 import { Mappable } from './mapping/annotations/Mappable';
 import { ApiField } from './mapping/annotations/ApiField';
 
-// enum ValidationType {
-//     NotBlank = 'NOT_BLANK',
-//     Email = 'EMAIL',
-//     Function = 'FUNCTION',
-//     RegexMatch = 'REGEX_MATCH',
-//     String = 'STRING',
-//     Boolean = 'BOOLEAN',
-//     Date = 'DATE',
-// }
-
-function Validate(target: any, key: PropertyKey, descriptor?: PropertyDescriptor) {
-    // console.log(target);
-    // console.log(descriptor);
-    // console.log(Reflect.getMetadata('design:type', target, key.toString()));
-    // console.log(`${target.constructor.name}#${key.toString()}`);
-    Object.defineProperty(target, key, {
-        get() {
-            return this._value;
-        },
-        set(val) {
-            this._value = val;
-        },
-    });
-}
-
 @Mappable
 export class SomeClass {
     @ApiField
