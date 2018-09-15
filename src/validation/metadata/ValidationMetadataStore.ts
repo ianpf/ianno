@@ -1,5 +1,4 @@
 import { Map } from './../../common/Map';
-import { NotBlankRule } from './../rules/NotBlankRule';
 import { FieldValidationMetadata } from './FieldValidationMetadata';
 import { ValidationRule } from '../rules/ValidationRule';
 

@@ -26,6 +26,7 @@
                 ]
             }
         ],
+        "ban-types": [false]
         "ordered-imports": [
             false
         ],

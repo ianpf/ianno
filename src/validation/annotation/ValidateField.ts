@@ -10,7 +10,7 @@ export function ValidateField(
 ): (target: any, key: PropertyKey, descriptor?: PropertyDescriptor) => void {
     return (target: any, key: PropertyKey, descriptor?: PropertyDescriptor) => {
         const type = Reflect.getMetadata('design:type', target, key.toString());
-        console.log(type);
+        // console.log(type);
         ValidationMetadataStore.addFieldValidationMeta(target.constructor.name, key.toString(), type, validation);
     };
 }
