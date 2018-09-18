@@ -1,10 +1,10 @@
 import 'reflect-metadata';
-import { ValidationMetadataStore } from './../metadata/ValidationMetadataStore';
-import { FieldValidationMetadata } from './../metadata/FieldValidationMetadata';
+import { ValidationMetadataStore } from '../metadata/ValidationMetadataStore';
+import { FieldValidationMetadata } from '../metadata/FieldValidationMetadata';
 import { ValidationRule } from '../rules/ValidationRule';
-import { NotBlankRule } from './../rules/NotBlankRule';
+import { NotBlankRule } from '../rules/NotBlankRule';
 
-export function ValidateField(
+export function Validate(
     validation: ValidationRule,
     message?: string,
 ): (target: any, key: PropertyKey, descriptor?: PropertyDescriptor) => void {
