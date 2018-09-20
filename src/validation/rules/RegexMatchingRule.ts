@@ -3,7 +3,7 @@ import { IModel } from "../../common/IModel";
 import { ValidationResult } from "../ValidationResult";
 
 export class RegexMatchingRule extends ValidationRule {
-    constructor(protected message: string, protected regex: RegExp) {
+    constructor(protected regex: RegExp, protected message: string) {
         super();
     }
 

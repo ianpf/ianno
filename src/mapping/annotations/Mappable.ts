@@ -11,7 +11,6 @@ interface IMappableModel {
 }
 
 export function Mappable<T extends IConstructor<any>>(constructor: T): T & IConstructor<IMappableModel> {
-    // constructor.
     let component = new Proxy<T>(constructor, {
         construct: (...args: any[]) => {
             const proxified = new constructor(...args);

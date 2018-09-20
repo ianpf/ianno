@@ -4,6 +4,6 @@ const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+")
 
 export class EmailRule extends RegexMatchingRule {
     constructor(message: string = 'Must be an email') {
-        super(message, emailRegex);
+        super(emailRegex, message);
     }
 }
