@@ -7,7 +7,7 @@ export class RegexMatchingRule extends ValidationRule {
         super();
     }
 
-    public async evaluate(value: unknown, model: IModel, property: string) {
+    public async evaluate(value: unknown, model?: IModel, property?: string) {
         if (typeof value === 'string') {
             const valid = this.regex.test(value);
             return new ValidationResult(valid, valid ? '' : this.message)
