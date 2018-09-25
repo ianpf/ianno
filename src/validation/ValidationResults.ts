@@ -1,6 +1,8 @@
 export class ValidationResults {
-    private messages: string[] = [];
-    private _valid: boolean = true;
+    public static ValidResults = () => new ValidationResults();
+    public static InvalidResults = (messages: string[]) => new ValidationResults(false, messages);
+
+    constructor(private _valid: boolean = true, private messages: string[] = []) {}
 
     public get valid() {
         return this._valid;

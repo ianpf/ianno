@@ -8,7 +8,7 @@ export class NotBlankRule extends ValidationRule {
         super();
     }
     public async evaluate(value: unknown, model?: IModel, property?: string) {
-        if (NotBlankRule.blankValuesList.indexOf(value) !== -1) {
+        if (NotBlankRule.blankValuesList.includes(value)) {
             return ValidationResult.InvalidResult(this.message);
         } else {
             return ValidationResult.ValidResult();
