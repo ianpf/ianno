@@ -14,3 +14,8 @@ export function Validate(
         ValidationMetadataStore.addFieldValidationMeta(target.constructor.name, key.toString(), type, validation);
     };
 }
+
+
+function addSymbolForValidation(target: any) {
+    
+}

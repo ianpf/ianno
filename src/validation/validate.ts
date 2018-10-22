@@ -8,7 +8,6 @@ export async function validate(model: IModel, modelClass: IConstructor<IModel>) 
     const results = new ValidationResults();
     for (const ruleMeta of validationRules) {
         const {fieldName, validation} = ruleMeta;
-        console.log(model[fieldName]);
         const {valid, message} = await validation.evaluate(model[fieldName], model, fieldName);
         if (message) results.addMessage(message);
         results.valid = valid;
