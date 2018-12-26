@@ -1,13 +1,10 @@
+import { ValidationMetadataStore } from './validation/metadata/ValidationMetadataStore';
 import { OneOfRule } from './validation/rules/OneOfRule';
 import { EmailRule } from './validation/rules/EmailRule';
 import { IModel } from './common/IModel';
 import 'reflect-metadata';
 import { NotBlankRule } from './validation/rules/NotBlankRule';
-import { Validate } from './validation/annotation/Validate';
-import { validate } from './validation/validate';
-import { IsEmail } from './validation/annotation/IsEmail';
-import { IsNotBlank } from './validation/annotation/IsNotBlank';
-import { IsOneOf } from './validation/annotation/IsOneOf';
+import { IsNotBlank, IsEmail, IsOneOf, validate, Validate } from './validation';
 
 export class User {
     @IsNotBlank()
@@ -17,6 +14,15 @@ export class User {
     @IsOneOf(['something2', 'something3'])
     public something = 'something';
 }
+
+export class Account {
+    @Validate(new NotBlankRule('abc'))
+    public owner: User = new User();
+
+    public users: User[] = [];
+    
+}
+console.log(ValidationMetadataStore.getFieldValidation(Account));
 
 export async function main() {
     const user1 = new User();

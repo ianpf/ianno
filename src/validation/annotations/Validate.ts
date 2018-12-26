@@ -8,9 +8,9 @@ export function Validate(
     validation: ValidationRule,
     message?: string,
 ): (target: any, key: PropertyKey, descriptor?: PropertyDescriptor) => void {
-    return (target: any, key: PropertyKey, descriptor?: PropertyDescriptor) => {
-        const type = Reflect.getMetadata('design:type', target, key.toString());
-        // console.log(type);
+    return (target: any, _key: PropertyKey, descriptor?: PropertyDescriptor) => {
+        const key = typeof _key === 'number' ? _key.toString() : _key;
+        const type = Reflect.getMetadata('design:type', target, key);
         ValidationMetadataStore.addFieldValidationMeta(target.constructor.name, key.toString(), type, validation);
     };
 }

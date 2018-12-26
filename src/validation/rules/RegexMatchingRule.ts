@@ -4,7 +4,7 @@ import { ValidationResult } from "../ValidationResult";
 
 export class RegexMatchingRule extends ValidationRule {
     constructor(protected regex: RegExp, protected message: string) {
-        super();
+        super(message);
     }
 
     public async evaluate(value: unknown, model?: IModel, property?: string) {

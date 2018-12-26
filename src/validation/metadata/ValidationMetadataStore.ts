@@ -16,8 +16,8 @@ export class ValidationMetadataStore {
         this.fieldValidationMetadataStore.put(className, fieldValidation);
     }
 
-    public static getFieldValidation(target: any) {
+    public static getFieldValidation(target: any): FieldValidationMetadata[] {
         const className = target.prototype.constructor.name;
-        return this.fieldValidationMetadataStore.get(className);
+        return this.fieldValidationMetadataStore.get(className) || [];
     }
 }

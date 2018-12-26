@@ -5,7 +5,7 @@ import { ValidationRule } from './ValidationRule';
 export class NotBlankRule extends ValidationRule {
     private static blankValuesList: any[] = [null, undefined, '', NaN];
     constructor(protected message: string = 'Field cannot be blank') {
-        super();
+        super(message);
     }
     public async evaluate(value: unknown, model?: IModel, property?: string) {
         if (NotBlankRule.blankValuesList.includes(value)) {
