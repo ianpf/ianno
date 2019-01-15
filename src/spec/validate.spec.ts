@@ -3,6 +3,7 @@ import { RegexMatchingRule } from './../validation/rules/RegexMatchingRule';
 import { NotBlankRule } from './../validation/rules/NotBlankRule';
 import { validate } from '../validation/validate';
 import { ValidationRule, EmailRule, IsNotBlank } from '../validation';
+import { ValidationResult } from '../validation/ValidationResult';
 
 describe(validate, () => {
   const model = {
@@ -18,13 +19,13 @@ describe(validate, () => {
     trueValue: true,
     naN: NaN,
     regexMatching: 'abc',
-    regexNotMatching: 'adc'
+    regexNotMatching: 'adc',
   };
 
   describe(IsNotBlank, () => {
     class IsNotBlankModel {
       @IsNotBlank()
-      notBlankField: any = '';
+      public notBlankField: any = '';
     }
     const notBlankModel = new IsNotBlankModel();
     describe('returns valid when', () => {
@@ -47,27 +48,31 @@ describe(validate, () => {
     describe('returns invalid when', () => {
       const invalidResponse = {
         valid: false,
-        messages: ['Please provide a value for this field']
+        messages: ['Please provide a value for this field'],
       };
 
       it('is given an empty string', async () => {
         notBlankModel.notBlankField = '';
-        expect(await validate(notBlankModel, IsNotBlankModel)).toEqual(ValidationResults.InvalidResults(['Field cannot be blank']));
+        expect((await validate(notBlankModel, IsNotBlankModel)).errorsFor('notBlankField'))
+          .toEqual(ValidationResult.InvalidResult('notBlankField', 'Field cannot be blank'));
       });
 
       it('is given a null value', async () => {
         notBlankModel.notBlankField = null;
-        expect(await validate(notBlankModel, IsNotBlankModel)).toEqual(ValidationResults.InvalidResults(['Field cannot be blank']));
+        expect((await validate(notBlankModel, IsNotBlankModel)).errorsFor('notBlankField'))
+          .toEqual(ValidationResult.InvalidResult('notBlankField', 'Field cannot be blank'));
       });
 
       it('is given an undefined value', async () => {
         notBlankModel.notBlankField = undefined;
-        expect(await validate(notBlankModel, IsNotBlankModel)).toEqual(ValidationResults.InvalidResults(['Field cannot be blank']));
+        expect((await validate(notBlankModel, IsNotBlankModel)).errorsFor('notBlankField'))
+          .toEqual(ValidationResult.InvalidResult('notBlankField', 'Field cannot be blank'));
       });
 
       it('it is NaN', async () => {
         notBlankModel.notBlankField = NaN;
-        expect(await validate(notBlankModel, IsNotBlankModel)).toEqual(ValidationResults.InvalidResults(['Field cannot be blank']));
+        expect((await validate(notBlankModel, IsNotBlankModel)).errorsFor('notBlankField'))
+          .toContain(ValidationResult.InvalidResult('notBlankField', 'Field cannot be blank'));
       });
     });
   });

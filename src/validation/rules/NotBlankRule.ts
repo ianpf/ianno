@@ -7,11 +7,11 @@ export class NotBlankRule extends ValidationRule {
     constructor(protected message: string = 'Field cannot be blank') {
         super(message);
     }
-    public async evaluate(value: unknown, model?: IModel, property?: string) {
+    public async evaluate(value: unknown, model: IModel, property: string) {
         if (NotBlankRule.blankValuesList.includes(value)) {
-            return ValidationResult.InvalidResult(this.message);
+            return ValidationResult.InvalidResult(property, this.message);
         } else {
-            return ValidationResult.ValidResult();
+            return ValidationResult.ValidResult(property);
         }
     }
 }

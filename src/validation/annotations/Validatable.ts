@@ -1,8 +1,8 @@
 import { TypescriptMetadataKeys } from './../../common/TypescriptMetadataKeys';
-import 'reflect-metadata'
+import 'reflect-metadata';
 import { IConstructor } from './../../common/IConstructor';
 
-const validationSymbols: [IConstructor<any>, Symbol][] = [];
+const validationSymbols: Array<[IConstructor<any>, Symbol]> = [];
 
 function isConstructor<T>(constructor: unknown): constructor is {new(): any, name: string} {
     return true;
@@ -23,18 +23,18 @@ function addSymbolTuple<T>(target: IConstructor<T>) {
 
 export function Validatable<T extends IConstructor<any>>(constructor: T): IConstructor<IMappableModel> {
     class component extends constructor {
-        
+
     }
-    component.prototype.validationSymbols
+    component.prototype.validationSymbols;
     return constructor;
 }
 
 function isMappableModel(model: unknown) {
     if (model instanceof Proxy) {
-        
+
     }
 }
 
-function addValidationSymbol(target: any, ) {
+function addValidationSymbol(target: any ) {
 
 }

@@ -11,11 +11,7 @@ export function Validate(
     return (target: any, _key: PropertyKey, descriptor?: PropertyDescriptor) => {
         const key = typeof _key === 'number' ? _key.toString() : _key;
         const type = Reflect.getMetadata('design:type', target, key);
+        console.log(type);
         ValidationMetadataStore.addFieldValidationMeta(target.constructor.name, key.toString(), type, validation);
     };
-}
-
-
-function addSymbolForValidation(target: any) {
-    
 }

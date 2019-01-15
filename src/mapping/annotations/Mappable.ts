@@ -1,5 +1,5 @@
 import { TypescriptMetadataKeys } from './../../common/TypescriptMetadataKeys';
-import 'reflect-metadata'
+import 'reflect-metadata';
 import { IConstructor } from './../../common/IConstructor';
 
 function isConstructor<T>(constructor: unknown): constructor is {new(): any, name: string} {
@@ -11,18 +11,18 @@ interface IMappableModel {
 }
 
 export function Mappable<T extends IConstructor<any>>(constructor: T): T & IConstructor<IMappableModel> {
-    let component = new Proxy<T>(constructor, {
+    const component = new Proxy<T>(constructor, {
         construct: (...args: any[]) => {
             const proxified = new constructor(...args);
             return proxified;
-        }
+        },
     });
     return component;
 }
 
 function isMappableModel(model: unknown) {
     if (model instanceof Proxy) {
-        
+
     }
 }
 

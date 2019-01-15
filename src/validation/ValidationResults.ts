@@ -1,9 +1,6 @@
+import { ValidationResult } from './ValidationResult';
+
 export class ValidationResults {
-    public static ValidResults = () => new ValidationResults();
-    public static InvalidResults = (messages: string[]) => new ValidationResults(false, messages);
-
-    constructor(private _valid: boolean = true, private messages: string[] = []) {}
-
     public get valid() {
         return this._valid;
     }
@@ -12,8 +9,26 @@ export class ValidationResults {
         this._valid = this.valid ? val : val;
     }
 
-    public addMessage(message: string) {
-        this.messages.push(message);
+    constructor(
+        private _valid: boolean = true,
+        private messages: Array<ValidationResult | ValidationResults> = [],
+    ) {}
+
+    public static ValidResults() {
+        return new ValidationResults();
+    }
+
+    public static InvalidResults(messages: Array<ValidationResult | ValidationResults>) {
+        return new ValidationResults(false, messages);
+    }
+
+    public errorsFor(fieldName: string): Array<ValidationResult | ValidationResults> {
+        this.messages = [];
+        return [];
+    }
+
+    public addResult(fieldName: string, result: ValidationResult | ValidationResults): void {
+        this.messages.push(result);
     }
 
     public getMessages() {

@@ -26,10 +26,13 @@
                 ]
             }
         ],
-        "ban-types": [false]
+        "object-literal-sort-keys": [false],
+        "ban-types": [false],
         "ordered-imports": [
             false
         ],
+        "interface-name": [false],
+        "variable-name": [true, "allow-leading-underscore"],
         "no-console": [false],
         "max-classes-per-file": [true, 1]
     },
