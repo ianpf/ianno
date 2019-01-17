@@ -1,4 +1,3 @@
----
 # Ianno
 
 Dual meaning, first because it's a decorator (annotation) based library, second second because whenever my colleagues talk to me about it they say

@@ -3,15 +3,15 @@ import { ValidationResult } from '../ValidationResult';
 import { ValidationRule } from './ValidationRule';
 
 export class NotBlankRule extends ValidationRule {
-    private static blankValuesList: any[] = [null, undefined, '', NaN];
+    private static blankValuesList: Array<any> = [null, undefined, '', NaN];
     constructor(protected message: string = 'Field cannot be blank') {
         super(message);
     }
-    public async evaluate(value: unknown, model: IModel, property: string) {
+    public async evaluate(value: unknown, fieldName: string) {
         if (NotBlankRule.blankValuesList.includes(value)) {
-            return ValidationResult.InvalidResult(property, this.message);
+            return ValidationResult.InvalidResult(fieldName, this.message);
         } else {
-            return ValidationResult.ValidResult(property);
+            return ValidationResult.ValidResult(fieldName);
         }
     }
 }

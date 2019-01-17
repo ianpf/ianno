@@ -1,9 +1,9 @@
 export class ValidationResult {
-    constructor(public valid: boolean, public message: string = '') {}
-    public static InvalidResult(message: string) {
-        return new ValidationResult(false, message);
+    constructor(public fieldName: string, public valid: boolean, public message: string = '') {}
+    public static InvalidResult(fieldName: string, message: string) {
+        return new ValidationResult(fieldName, false, message);
     }
-    public static ValidResult() {
-        return new ValidationResult(true);
+    public static ValidResult(fieldName: string) {
+        return new ValidationResult(fieldName, true);
     }
 }

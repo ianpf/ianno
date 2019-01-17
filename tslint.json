@@ -32,9 +32,10 @@
             false
         ],
         "interface-name": [false],
+        "array-type": [true, "generic"],
         "variable-name": [true, "allow-leading-underscore"],
         "no-console": [false],
-        "max-classes-per-file": [true, 1]
+        "max-classes-per-file": [true, 1, "exclude-class-expressions"]
     },
     "rulesDirectory": []
 }

@@ -24,11 +24,12 @@ export async function validate(
     const results = new ValidationResults();
     for (const ruleMeta of validationRules) {
         const { fieldName, validation, type } = ruleMeta;
-        const result = await validation.evaluate(model[fieldName], model, fieldName, type);
-        if (result) {
-            results.addResult(fieldName, result);
+        let result = await validation.evaluate(model[fieldName], fieldName, model, type);
+        result = result instanceof Array ? result : [result];
+        result = result.filter((item) => !item.valid);
+        if (result.length > 0) {
+            results.addResults(fieldName, result);
         }
-        results.valid = result.valid;
     }
     return results;
 }

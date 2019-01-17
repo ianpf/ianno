@@ -3,10 +3,7 @@ import { ValidationResult } from '../ValidationResult';
 import { IModel } from '../../common/IModel';
 
 export class OfTypeRule extends ValidationRule {
-  constructor() {
-    super()
-  }
-  public async evaluate(value: unknown, model: IModel, property: string) {
-    return ValidationResult.ValidResult();
+  public async evaluate(value: unknown, fieldName: string) {
+    return ValidationResult.ValidResult(fieldName);
   }
 }

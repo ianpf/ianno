@@ -6,8 +6,8 @@ export abstract class ValidationRule {
     constructor(protected message: string) {}
     public abstract async evaluate(
         value: unknown,
+        fieldName: string,
         model?: IModel,
-        property?: string,
         type?: string | Function,
-    ): Promise<ValidationResult | ValidationResults>;
+    ): Promise<ValidationResult | Array<ValidationResult>>;
 }

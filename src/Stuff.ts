@@ -5,7 +5,7 @@ import { IModel } from './common/IModel';
 import 'reflect-metadata';
 import { NotBlankRule } from './validation/rules/NotBlankRule';
 import { IsNotBlank, IsEmail, IsOneOf, validate, Validate } from './validation';
-import { IsValidModel } from './validation/rules/IsValidModel';
+import { ValidModelRule } from './validation/rules/ValidModelRule';
 import { IConstructor } from './common/IConstructor';
 
 class BaseClass {
@@ -21,10 +21,10 @@ class User extends BaseClass {
 }
 
 class Account {
-    @Validate(new IsValidModel('abc'))
+    @Validate(new ValidModelRule('abc'))
     public owner: User = new User();
-    @Validate(new IsValidModel('def'))
-    public users: User[] = [];
+    @Validate(new ValidModelRule('def'))
+    public users: Array<User> = [];
 }
 
 export async function main() {
@@ -32,9 +32,8 @@ export async function main() {
     const user2 = new User();
     const account = new Account();
     account.owner = user1;
-    // user1.data = {};
     user1.userEmail = 'abc@def.com';
     console.log(ValidationMetadataStore.getFieldValidation(account));
-    console.log((await validate(account, Account)).getMessages());
-    console.log((await validate(account, Account)).getMessages());
+    console.log((await validate(account, Account)).getErrors());
+    console.log((await validate(account, Account)).getErrors());
 }

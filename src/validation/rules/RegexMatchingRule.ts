@@ -7,12 +7,12 @@ export class RegexMatchingRule extends ValidationRule {
         super(message);
     }
 
-    public async evaluate(value: unknown, model: IModel, property: string) {
+    public async evaluate(value: unknown, fieldName: string, model?: IModel) {
         if (typeof value === 'string') {
             const valid = this.regex.test(value);
-            return new ValidationResult(property, valid, valid ? '' : this.message);
+            return new ValidationResult(fieldName, valid, valid ? '' : this.message);
         } else {
-            return ValidationResult.InvalidResult(property, 'Field is not a string');
+            return ValidationResult.InvalidResult(fieldName, 'Field is not a string');
         }
     }
 }

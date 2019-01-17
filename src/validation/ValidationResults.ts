@@ -2,40 +2,34 @@ import { ValidationResult } from './ValidationResult';
 
 export class ValidationResults {
     public get valid() {
-        return this._valid;
-    }
-
-    public set valid(val) {
-        this._valid = this.valid ? val : val;
+        return this.errors.some((item) => !item.valid);
     }
 
     constructor(
-        private _valid: boolean = true,
-        private messages: Array<ValidationResult | ValidationResults> = [],
+        private errors: Array<ValidationResult> = [],
     ) {}
 
     public static ValidResults() {
         return new ValidationResults();
     }
 
-    public static InvalidResults(messages: Array<ValidationResult | ValidationResults>) {
-        return new ValidationResults(false, messages);
+    public static InvalidResults(messages: Array<ValidationResult>) {
+        return new ValidationResults(messages);
     }
 
-    public errorsFor(fieldName: string): Array<ValidationResult | ValidationResults> {
-        this.messages = [];
-        return [];
+    public errorsFor(partial: string): Array<ValidationResult> {
+        return this.errors.filter((item) => item.fieldName.startsWith(partial));
     }
 
-    public addResult(fieldName: string, result: ValidationResult | ValidationResults): void {
-        this.messages.push(result);
+    public addResults(fieldName: string, result: Array<ValidationResult>): void {
+        if (result instanceof Array) {
+            this.errors.push(...result);
+        } else {
+            this.errors.push(result);
+        }
     }
 
-    public getMessages() {
-        return this.messages;
-    }
-
-    public setValid(val: boolean) {
-        this._valid = val;
+    public getErrors() {
+        return this.errors;
     }
 }
