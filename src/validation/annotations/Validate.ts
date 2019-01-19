@@ -8,6 +8,6 @@ export function Validate(
     return (target: any, _key: PropertyKey, descriptor?: PropertyDescriptor) => {
         const key = typeof _key === 'number' ? _key.toString() : _key;
         const type = Reflect.getMetadata('design:type', target, key);
-        ValidationMetadataStore.addFieldValidationMeta(target, key.toString(), type, validation);
+        ValidationMetadataStore.addFieldValidationMeta(target.constructor, key.toString(), type, validation);
     };
 }

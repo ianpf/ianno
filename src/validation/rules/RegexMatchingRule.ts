@@ -12,7 +12,7 @@ export class RegexMatchingRule extends ValidationRule {
             const valid = this.regex.test(value);
             return new ValidationResult(fieldName, valid, valid ? '' : this.message);
         } else {
-            return ValidationResult.InvalidResult(fieldName, 'Field is not a string');
+            return ValidationResult.InvalidResult(fieldName, this.message);
         }
     }
 }

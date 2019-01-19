@@ -7,3 +7,10 @@ Dual meaning, first because it's a decorator (annotation) based library, second 
 This repository is still very much a work in progress, and is subject to (extreme) change.
 
 There are currently no good tests, and no good examples. But this should change as work progresses.
+
+To get set up running tests locally:
+
+```
+npm ci
+npx jest
+```

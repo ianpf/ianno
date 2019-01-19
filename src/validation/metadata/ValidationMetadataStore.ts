@@ -1,8 +1,9 @@
 import { FieldValidationMetadata } from './FieldValidationMetadata';
 import { ValidationRule } from '../rules/ValidationRule';
+import { IConstructor } from '../../common/IConstructor';
 
 export class ValidationMetadataStore {
-    public static fieldValidationMetadataStore: Map<string, Array<FieldValidationMetadata>> = new Map();
+    public static fieldValidationMetadataStore: Map<Function, Array<FieldValidationMetadata>> = new Map();
 
     public static addFieldValidationMeta(
         targetClass: any,
@@ -11,11 +12,25 @@ export class ValidationMetadataStore {
         validation: ValidationRule,
     ): void {
         const fieldValidation = this.fieldValidationMetadataStore.get(targetClass) || [];
-        fieldValidation.push(new FieldValidationMetadata(targetClass, field, type, validation));
+        fieldValidation.push(new FieldValidationMetadata(targetClass.name, field, type, validation));
         this.fieldValidationMetadataStore.set(targetClass, fieldValidation);
     }
 
     public static getFieldValidation(targetClass: any): Array<FieldValidationMetadata> {
-        return this.fieldValidationMetadataStore.get(targetClass) || [];
+        const validationRules = this.fieldValidationMetadataStore.get(targetClass) || [];
+        for (const prototype of this.prototypes(targetClass)) {
+            validationRules.push(...(this.fieldValidationMetadataStore.get(prototype) || []));
+        }
+        return validationRules;
+    }
+
+    private static* prototypes(object: InstanceType<IConstructor<{}>>): IterableIterator<Function> {
+        let prototype = object;
+        do {
+            prototype = Object.getPrototypeOf(prototype);
+            if (prototype && typeof prototype === 'function') {
+                yield prototype;
+            }
+        } while (prototype);
     }
 }

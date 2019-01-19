@@ -4,7 +4,7 @@ export class FieldValidationMetadata {
     constructor(
         public modelName: string,
         public fieldName: string,
-        public type: string,
+        public type: any,
         public validation: ValidationRule,
     ) {}
 }

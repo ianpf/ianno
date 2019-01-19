@@ -10,9 +10,16 @@ describe(RegexMatchingRule, () => {
     });
   });
 
-  describe('returns invalid when string does not match', () => {
+  describe('returns invalid when', () => {
     it('a string not matching is given', async () => {
       expect(await rule.evaluate('abd', 'regexField'))
+        .toEqual(ValidationResult.InvalidResult(
+          'regexField',
+          'It tests the regex for the string or else it gets the hose again',
+        ));
+    });
+    it('a non-string value is given', async () => {
+      expect(await rule.evaluate(null, 'regexField'))
         .toEqual(ValidationResult.InvalidResult(
           'regexField',
           'It tests the regex for the string or else it gets the hose again',

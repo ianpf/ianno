@@ -21,10 +21,10 @@ class User extends BaseClass {
 }
 
 class Account {
+    @IsNotBlank()
+    public stuff: string = '';
     @Validate(new ValidModelRule('abc'))
     public owner: User = new User();
-    @Validate(new ValidModelRule('def'))
-    public users: Array<User> = [];
 }
 
 export async function main() {
@@ -33,7 +33,7 @@ export async function main() {
     const account = new Account();
     account.owner = user1;
     user1.userEmail = 'abc@def.com';
-    console.log(ValidationMetadataStore.getFieldValidation(account));
+    console.log(ValidationMetadataStore.getFieldValidation(Account));
     console.log((await validate(account, Account)).getErrors());
-    console.log((await validate(account, Account)).getErrors());
+    // console.log((await validate(user1, User)).getErrors());
 }
