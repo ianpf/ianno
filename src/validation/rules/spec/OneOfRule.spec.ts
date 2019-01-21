@@ -7,11 +7,11 @@ describe(OneOfRule, () => {
   describe('when the value is in the acceptable values', () => {
     it('should return a valid result', async () => {
       expect(await rule.evaluate('a', 'validField'))
-        .toEqual(ValidationResult.ValidResult('validField'));
+        .toEqual([]);
     });
     it('should return a valid result', async () => {
       expect(await rule.evaluate(1, 'validField'))
-        .toEqual(ValidationResult.ValidResult('validField'));
+        .toEqual([]);
     });
   });
   describe('when the value is not in the acceptable values', () => {

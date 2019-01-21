@@ -1,4 +1,3 @@
-import { EmailRule } from './../rules/EmailRule';
 import { Validate } from './Validate';
 import { NotBlankRule } from '../rules/NotBlankRule';
 

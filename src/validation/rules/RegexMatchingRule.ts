@@ -1,5 +1,4 @@
 import { ValidationRule } from './ValidationRule';
-import { IModel } from '../../common/IModel';
 import { ValidationResult } from '../ValidationResult';
 
 export class RegexMatchingRule extends ValidationRule {
@@ -7,12 +6,11 @@ export class RegexMatchingRule extends ValidationRule {
         super(message);
     }
 
-    public async evaluate(value: unknown, fieldName: string, model?: IModel) {
-        if (typeof value === 'string') {
-            const valid = this.regex.test(value);
-            return new ValidationResult(fieldName, valid, valid ? '' : this.message);
-        } else {
+    public async evaluate(value: unknown, fieldName: string) {
+        if (typeof value !== 'string' || !this.regex.test(value)) {
             return ValidationResult.InvalidResult(fieldName, this.message);
+        } else {
+            return [];
         }
     }
 }

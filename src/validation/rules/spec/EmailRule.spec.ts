@@ -8,7 +8,7 @@ describe(EmailRule, () => {
   describe('returns valid when', () => {
     it('a valid email is given', async () => {
       expect(await rule.evaluate('test@test.com', 'emailField'))
-        .toEqual(ValidationResult.ValidResult('emailField'));
+        .toEqual([]);
     });
   });
 

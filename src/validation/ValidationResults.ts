@@ -18,6 +18,10 @@ export class ValidationResults {
         this.errors.push(...result);
     }
 
+    public addResult(result: ValidationResult): void {
+        this.errors.push(result);
+    }
+
     public getErrors() {
         return this.errors;
     }

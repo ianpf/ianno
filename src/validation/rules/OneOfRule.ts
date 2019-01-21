@@ -11,10 +11,10 @@ export class OneOfRule<T> extends ValidationRule {
             valueType === 'number' ||
             valueType ===  'boolean'
         ) {
-            if (this.values.includes(value as any)) {
-                return ValidationResult.ValidResult(property);
-            } else {
+            if (!this.values.includes(value as any)) {
                 return ValidationResult.InvalidResult(property, this.message);
+            } else {
+                return [];
             }
         } else {
             return ValidationResult.InvalidResult(property, this.message);

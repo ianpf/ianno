@@ -6,7 +6,7 @@ describe(RegexMatchingRule, () => {
 
   describe('returns valid when', () => {
     it('a string matching is given', async () => {
-      expect(await rule.evaluate('abc', 'regexField')).toEqual(ValidationResult.ValidResult('regexField'));
+      expect(await rule.evaluate('abc', 'regexField')).toEqual([]);
     });
   });
 

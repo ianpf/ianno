@@ -1,6 +1,5 @@
 import { IModel } from './../../common/IModel';
 import { ValidationResult } from '../ValidationResult';
-import { ValidationResults } from '../ValidationResults';
 
 export abstract class ValidationRule {
     constructor(protected message: string) {}

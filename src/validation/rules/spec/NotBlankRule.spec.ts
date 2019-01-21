@@ -3,17 +3,18 @@ import { ValidationResult } from '../../ValidationResult';
 
 describe(NotBlankRule, () => {
   const rule = new NotBlankRule();
+  const ruleWithMessage = new NotBlankRule('a message');
   describe('returns valid when', () => {
     it('it is given zero', async () => {
-      expect(await rule.evaluate(0, 'notBlankField')).toEqual(ValidationResult.ValidResult('notBlankField'));
+      expect(await rule.evaluate(0, 'notBlankField')).toEqual([]);
     });
 
     it('it is given false', async () => {
-      expect(await rule.evaluate(false, 'notBlankField')).toEqual(ValidationResult.ValidResult('notBlankField'));
+      expect(await rule.evaluate(false, 'notBlankField')).toEqual([]);
     });
 
     it('it is a number', async () => {
-      expect(await rule.evaluate(5, 'notBlankField')).toEqual(ValidationResult.ValidResult('notBlankField'));
+      expect(await rule.evaluate(5, 'notBlankField')).toEqual([]);
     });
   });
 
@@ -24,8 +25,8 @@ describe(NotBlankRule, () => {
     });
 
     it('is given a null value', async () => {
-      expect(await rule.evaluate(null, 'notBlankField'))
-        .toEqual(ValidationResult.InvalidResult('notBlankField', 'Field cannot be blank'));
+      expect(await ruleWithMessage.evaluate(null, 'notBlankField'))
+        .toEqual(ValidationResult.InvalidResult('notBlankField', 'a message'));
     });
 
     it('is given an undefined value', async () => {

@@ -1,4 +1,3 @@
-import { IModel } from './../../common/IModel';
 import { ValidationResult } from '../ValidationResult';
 import { ValidationRule } from './ValidationRule';
 
@@ -11,7 +10,7 @@ export class NotBlankRule extends ValidationRule {
         if (NotBlankRule.blankValuesList.includes(value)) {
             return ValidationResult.InvalidResult(fieldName, this.message);
         } else {
-            return ValidationResult.ValidResult(fieldName);
+            return [];
         }
     }
 }

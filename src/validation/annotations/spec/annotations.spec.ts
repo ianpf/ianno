@@ -26,11 +26,10 @@ class GuineaPig {
   public regexField: string = '';
 
   @Validate(new NotBlankRule())
-  public 1: string = '';
+  public [1]: string = '';
 }
 
 describe('The annotations should', () => {
-  const guineaPig = new GuineaPig();
   it('should have the annotations', () => {
     const validation = ValidationMetadataStore.getFieldValidation(GuineaPig);
     expect(validation).toContainEqual(

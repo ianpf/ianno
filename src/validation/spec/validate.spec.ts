@@ -6,7 +6,7 @@ class MockValidValidationRule extends ValidationRule {
   public calls: Array<any> = [];
   public async evaluate(...args: Array<any>) {
     this.calls.push(args);
-    return ValidationResult.ValidResult(args[1]);
+    return [];
   }
 }
 

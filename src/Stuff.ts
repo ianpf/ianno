@@ -1,12 +1,8 @@
 import { ValidationMetadataStore } from './validation/metadata/ValidationMetadataStore';
-import { OneOfRule } from './validation/rules/OneOfRule';
-import { EmailRule } from './validation/rules/EmailRule';
 import { IModel } from './common/IModel';
 import 'reflect-metadata';
-import { NotBlankRule } from './validation/rules/NotBlankRule';
 import { IsNotBlank, IsEmail, IsOneOf, validate, Validate } from './validation';
 import { ValidModelRule } from './validation/rules/ValidModelRule';
-import { IConstructor } from './common/IConstructor';
 
 class BaseClass {
     @IsNotBlank()
@@ -29,7 +25,7 @@ class Account {
 
 export async function main() {
     const user1 = new User();
-    const user2 = new User();
+    // const user2 = new User();
     const account = new Account();
     account.owner = user1;
     user1.userEmail = 'abc@def.com';
