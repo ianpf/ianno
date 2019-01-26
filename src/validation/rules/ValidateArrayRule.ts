@@ -27,7 +27,6 @@ export class ValidateArrayRule extends ValidationRule {
       }
       return results.getErrors();
     }
-    return ValidationResult.InvalidResult(fieldName, 'Value must be of type Array');
+    return [ValidationResult.InvalidResult(fieldName, 'Must be an array')];
   }
-
 }

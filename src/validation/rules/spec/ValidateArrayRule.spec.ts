@@ -31,4 +31,16 @@ describe(ValidateArrayRule, () => {
         ValidationResult.InvalidResult('validatedArray', 'All values must not be blank'),
       ]));
   });
+  it('should validate all members of the array', async () => {
+    const model = new ValidatedClass();
+    model.notBlankField = 'abc';
+    expect(await ruleWithValidModel.evaluate([model], 'validatedArray'))
+      .toEqual([]);
+  });
+  it('should return false for a non-array value', async () => {
+    expect(await ruleWithValidModel.evaluate('badValue', 'validatedArray'))
+      .toEqual(expect.arrayContaining([
+        ValidationResult.InvalidResult('validatedArray', 'Must be an array'),
+      ]));
+  });
 });
