@@ -1,3 +1,3 @@
-export interface IModel {
+export interface Model {
     [key: string]: any;
 }

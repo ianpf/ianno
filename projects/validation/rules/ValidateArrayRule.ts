@@ -1,6 +1,6 @@
+import { Model } from './../common/Model';
 import { ValidationRule } from './ValidationRule';
 import { ValidationResult } from '../ValidationResult';
-import { IModel } from '../../common/IModel';
 import { ValidationResults } from '../ValidationResults';
 
 export enum ArrayValidationMode {
@@ -14,7 +14,7 @@ export class ValidateArrayRule extends ValidationRule {
     super(message);
   }
 
-  public async evaluate(value: unknown, fieldName: string, model?: IModel) {
+  public async evaluate(value: unknown, fieldName: string, model?: Model) {
     console.log(this.mode);
     if (value instanceof Array) {
       const results = new ValidationResults();

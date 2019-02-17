@@ -1,5 +1,7 @@
-import { ValidationRule, Validate, validate, ValidationResult } from '../';
-import { IsNotBlank } from '../annotations';
+import { ValidationRule } from '../rules';
+import { ValidationResult } from '../ValidationResult';
+import { Validate, IsNotBlank } from '../annotations';
+import { validate } from '../validate';
 // tslint:disable:max-classes-per-file
 
 class MockValidValidationRule extends ValidationRule {

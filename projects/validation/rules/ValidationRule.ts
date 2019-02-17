@@ -1,4 +1,5 @@
-import { IModel } from './../../common/IModel';
+import { Model } from '../common/Model';
+
 import { ValidationResult } from '../ValidationResult';
 
 export abstract class ValidationRule {
@@ -6,7 +7,7 @@ export abstract class ValidationRule {
     public abstract async evaluate(
         value: unknown,
         fieldName: string,
-        model?: IModel,
+        model?: Model,
         type?: string | Function,
     ): Promise<ValidationResult | Array<ValidationResult>>;
 }

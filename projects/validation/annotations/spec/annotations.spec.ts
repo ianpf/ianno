@@ -1,3 +1,4 @@
+import { FieldValidationMetadata } from './../../metadata/FieldValidationMetadata';
 import { IsEmail } from '../IsEmail';
 import { MatchesRegex } from '../MatchesRegex';
 import { IsNotBlank } from '../IsNotBlank';
@@ -5,9 +6,8 @@ import { IsOneOf } from '../IsOneOf';
 import { Validate } from '../Validate';
 import { IsValidModel } from '../IsValidModel';
 import { NotBlankRule, EmailRule, OneOfRule, RegexMatchingRule } from '../../rules';
-import { ValidationMetadataStore } from '../../metadata/ValidationMetadataStore';
-import { FieldValidationMetadata } from '../../metadata/FieldValidationMetadata';
 import { ValidModelRule } from '../../rules/ValidModelRule';
+import { ValidationMetadataStore } from '../../metadata/ValidationMetadataStore';
 
 class GuineaPig {
   @IsEmail()

@@ -1,5 +1,5 @@
-import { EmailRule } from '../EmailRule';
 import { ValidationResult } from '../../ValidationResult';
+import { EmailRule } from '../EmailRule';
 
 describe(EmailRule, () => {
   const rule = new EmailRule();

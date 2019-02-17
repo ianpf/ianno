@@ -1,8 +1,8 @@
+import { Constructor } from './../common/Constructor';
+import { Model } from './../common/Model';
 import { BadValidationRuleError } from '../errors/BadValidationRuleError';
 import { ValidationRule } from './ValidationRule';
-import { IModel } from '../../common/IModel';
 import { ValidationResult } from '../ValidationResult';
-import { IConstructor } from '../../common/IConstructor';
 import { validate } from '../validate';
 import { ValidationResults } from '../ValidationResults';
 
@@ -11,7 +11,7 @@ export class ValidModelRule extends ValidationRule {
         super(message);
     }
 
-    public async evaluate(value: unknown, fieldName: string, model?: IModel, _type?: Function) {
+    public async evaluate(value: unknown, fieldName: string, model?: Model, _type?: Function) {
         const type = this.type || _type;
         if (!type) {
             throw new BadValidationRuleError(
@@ -19,7 +19,7 @@ export class ValidModelRule extends ValidationRule {
             );
         }
         if (this.objectIsInstance(value, type)) {
-            let results = await validate(value, type as IConstructor<{}>);
+            let results = await validate(value, type as Constructor<{}>);
             results = new ValidationResults(results.getErrors().map(({fieldName: innerFieldName, valid, message}) =>
                 new ValidationResult(`${fieldName}.${innerFieldName}`, valid, message),
             ));
@@ -31,7 +31,7 @@ export class ValidModelRule extends ValidationRule {
         return ValidationResult.InvalidResult(fieldName, this.message);
     }
 
-    public objectIsInstance(object: unknown, type: Function): object is InstanceType<IConstructor<{}>> {
+    public objectIsInstance(object: unknown, type: Function): object is InstanceType<Constructor<{}>> {
         if (typeof object === 'object' && object instanceof type) {
             return true;
         }

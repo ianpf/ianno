@@ -1,11 +1,11 @@
-import { IModel } from '../common/IModel';
+import { Constructor } from './common/Constructor';
+import { Model } from './common/Model';
 import { ValidationMetadataStore } from './metadata/ValidationMetadataStore';
 import { ValidationResults } from './ValidationResults';
-import { IConstructor } from '../common/IConstructor';
 
 export async function validate(
-    model: NonNullable<IModel>,
-    modelClass: IConstructor<IModel>,
+    model: NonNullable<Model>,
+    modelClass: Constructor<Model>,
 ): Promise<ValidationResults> {
     const validationRules = ValidationMetadataStore.getFieldValidation(modelClass);
     const results = new ValidationResults();

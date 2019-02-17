@@ -1,6 +1,6 @@
+import { Constructor } from '../common/Constructor';
 import { FieldValidationMetadata } from './FieldValidationMetadata';
 import { ValidationRule } from '../rules/ValidationRule';
-import { IConstructor } from '../../common/IConstructor';
 
 export class ValidationMetadataStore {
     public static fieldValidationMetadataStore: Map<Function, Array<FieldValidationMetadata>> = new Map();
@@ -24,7 +24,7 @@ export class ValidationMetadataStore {
         return validationRules;
     }
 
-    private static* prototypes(object: InstanceType<IConstructor<{}>>): IterableIterator<Function> {
+    private static* prototypes(object: InstanceType<Constructor<{}>>): IterableIterator<Function> {
         let prototype = object;
         do {
             prototype = Object.getPrototypeOf(prototype);
