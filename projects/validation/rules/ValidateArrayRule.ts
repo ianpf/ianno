@@ -10,12 +10,11 @@ export enum ArrayValidationMode {
 }
 
 export class ValidateArrayRule extends ValidationRule {
-  constructor(private rule: ValidationRule, private mode: ArrayValidationMode, message: string) {
+  constructor(private rule: ValidationRule, public _mode: ArrayValidationMode, message: string) {
     super(message);
   }
 
   public async evaluate(value: unknown, fieldName: string, model?: Model) {
-    console.log(this.mode);
     if (value instanceof Array) {
       const results = new ValidationResults();
       for (let i = 0; i < value.length; i++) {
