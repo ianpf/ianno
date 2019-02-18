@@ -1,5 +1,5 @@
 {
-  "name": "@ianno/core",
+  "name": "@ianno/validation",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,6 +13,7 @@
     "reflect-metadata": "^0.1.12",
     "ts-jest": "^23.10.1",
     "ts-node": "^7.0.1",
+    "tslib": "^1.9.3",
     "typescript": "^3.0.3"
   },
   "devDependencies": {

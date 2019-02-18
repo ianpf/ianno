@@ -1,8 +1,8 @@
-import React from 'react';
 import { ValidationRule, ValidationResults } from '@ianno/validation';
+import * as React from 'react';
 
-interface Prop {
-  validation: Many<ValidationRule>;
+interface Props {
+  validation: Array<ValidationRule>;
   value: any;
 }
 
@@ -10,11 +10,11 @@ interface State {
   result: ValidationResults;
 }
 
-export class ValidationErrors extends React.Component<Prop, State> {
+export class ValidationErrors extends React.Component<Props, State> {
   public componentDidUpdate() {
     const rules = this.props.validation instanceof Array ? this.props.validation : [this.props.validation];
     for (const rule of rules) {
-      rule.evaluate();
+      rule.evaluate(this.props.value, 'blankField');
     }
   }
   public render() {
@@ -22,9 +22,9 @@ export class ValidationErrors extends React.Component<Prop, State> {
       <div>
         <ul className={'validation-results'}>
           {
-            this.state.result.getErrors().map((item) => {
+            this.state.result.getErrors().map((item, index) => {
               return (
-                <li className={'validation-results-item'}>
+                <li className={'validation-results-item'} key={item.fieldName + index}>
                   {item.message}
                 </li>
               );
