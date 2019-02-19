@@ -6,16 +6,28 @@ export class ValidationResults {
     }
 
     constructor(
-        private errors: Array<ValidationResult> = [],
-    ) {}
+        errors: ValidationResult | Array<ValidationResult> = [],
+    ) {
+        if (errors instanceof Array) {
+            this.errors = errors;
+        } else {
+            this.errors = [errors];
+        }
+    }
+
+    private errors: Array<ValidationResult>;
 
     public resultsFor(partial: string): ValidationResults {
         const errors = this.errors.filter((item) => item.fieldName.startsWith(partial));
         return new ValidationResults(errors);
     }
 
-    public addResults(result: Array<ValidationResult>): void {
-        this.errors.push(...result);
+    public addResults(result: ValidationResult | Array<ValidationResult>): void {
+        if (result instanceof Array) {
+            this.errors.push(...result);
+        } else {
+            this.errors.push(result);
+        }
     }
 
     public addResult(result: ValidationResult): void {

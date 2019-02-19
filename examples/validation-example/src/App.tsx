@@ -2,11 +2,12 @@ import * as React from 'react';
 import './App.css';
 
 import { ValidationErrors } from '@ianno/react-extensions';
-import { NotBlankRule } from '@ianno/validation';
+import { NotBlankRule, RegexMatchingRule } from '@ianno/validation';
 import logo from './logo.svg';
 
 class App extends React.Component {
   public render() {
+    const rules = [new NotBlankRule(), new RegexMatchingRule(/abc/, 'must match regex /abc/')];
     return (
       <div className="App">
         <header className="App-header">
@@ -16,7 +17,7 @@ class App extends React.Component {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <ValidationErrors value={''} validation={[new NotBlankRule()]}/>
+        <ValidationErrors value={''} validation={rules}/>
       </div>
     );
   }

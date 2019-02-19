@@ -3,6 +3,7 @@ import { IModel } from './common/IModel';
 import 'reflect-metadata';
 import { IsNotBlank, IsEmail, IsOneOf, validate, Validate } from './validation';
 import { ValidModelRule } from './validation/rules/ValidModelRule';
+// tslint:disable:max-classes-per-file
 
 class BaseClass {
     @IsNotBlank()

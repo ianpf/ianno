@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier", "../../../tslint.json"],
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier", "../../tslint.json"],
   "linterOptions": {
     "exclude": [
       "config/**/*.js",

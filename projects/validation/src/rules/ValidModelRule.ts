@@ -1,3 +1,4 @@
+import 'jest';
 import { Constructor } from './../common/Constructor';
 import { Model } from './../common/Model';
 import { BadValidationRuleError } from '../errors/BadValidationRuleError';
