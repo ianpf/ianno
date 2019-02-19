@@ -23,9 +23,5 @@ describe(OneOfRule, () => {
       expect(await ruleWithMessage.evaluate('b', 'validField'))
         .toEqual(ValidationResult.InvalidResult('validField', 'wat'));
     });
-    it('should return an invalid result with a custom message', async () => {
-      expect(await rule.evaluate(null, 'validField'))
-        .toEqual(ValidationResult.InvalidResult('validField', 'Must be one of a, 1'));
-    });
   });
 });

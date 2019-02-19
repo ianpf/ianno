@@ -6,18 +6,10 @@ export class OneOfRule<T> extends ValidationRule {
         super(message || `Must be one of ${values.join(', ')}`);
     }
     public async evaluate(value: unknown, property: string) {
-        const valueType = typeof value;
-        if (valueType === 'string' ||
-            valueType === 'number' ||
-            valueType ===  'boolean'
-        ) {
-            if (!this.values.includes(value as any)) {
-                return ValidationResult.InvalidResult(property, this.message);
-            } else {
-                return [];
-            }
-        } else {
+        if (!this.values.includes(value as T)) {
             return ValidationResult.InvalidResult(property, this.message);
+        } else {
+            return [];
         }
     }
 }

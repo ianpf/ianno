@@ -15,7 +15,7 @@ describe(ValidateArrayRule, () => {
     new ValidModelRule('Must be valid', ValidatedClass),
     ArrayValidationMode.All, 'All values must not be blank',
   );
-  it('should validate all members of the array', async () => {
+  it('should report any errors for members of the array, and an error for the array overall ', async () => {
     expect(await rule.evaluate(['', null], 'validatedArray'))
       .toEqual(expect.arrayContaining([
         ValidationResult.InvalidResult('validatedArray[0]', 'Field cannot be blank'),
@@ -23,7 +23,7 @@ describe(ValidateArrayRule, () => {
         ValidationResult.InvalidResult('validatedArray', 'All values must not be blank'),
       ]));
   });
-  it('should validate all members of the array', async () => {
+  it('should report errors on models in the array in an understandable way', async () => {
     const model = new ValidatedClass();
     expect(await ruleWithValidModel.evaluate([model], 'validatedArray'))
       .toEqual(expect.arrayContaining([
@@ -31,7 +31,7 @@ describe(ValidateArrayRule, () => {
         ValidationResult.InvalidResult('validatedArray', 'All values must not be blank'),
       ]));
   });
-  it('should validate all members of the array', async () => {
+  it('should report no errors for the array or it\'s members when all are valid', async () => {
     const model = new ValidatedClass();
     model.notBlankField = 'abc';
     expect(await ruleWithValidModel.evaluate([model], 'validatedArray'))
