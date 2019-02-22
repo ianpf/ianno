@@ -2,7 +2,7 @@
   "name": "@ianno/react-extensions",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dst/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,11 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "@ianno/validation": "file:../validation",
-    "@types/react": "^16.8.3",
-    "react": "^16.8.2",
-    "tslib": "^1.9.3"
-  },
-  "peerDependencies": {
     "@types/react": "^16.8.3",
     "react": "^16.8.2"
   }

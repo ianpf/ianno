@@ -1,0 +1,40 @@
+{
+  "name": "ianno",
+  "version": "1.0.0",
+  "description": "Dual meaning, first because it's a decorator (annotation) based library, second second because whenever my colleagues talk to me about it they say \"ianno\"",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianpf/ianno.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ianpf/ianno/issues"
+  },
+  "homepage": "https://github.com/ianpf/ianno#readme",
+  "dependencies": {
+    "@ianno/react-extensions": "file:packages/react-extensions",
+    "@ianno/validation": "file:packages/validation",
+    "awesome-typescript-loader": "^5.2.1",
+    "circular-dependency-plugin": "^5.0.2",
+    "mini-css-extract-plugin": "^0.5.0",
+    "webpack": "^4.29.5",
+    "webpack-notifier": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.13",
+    "@types/react": "^16.8.3",
+    "jest": "^23.6.0",
+    "react": "^16.8.2",
+    "ts-jest": "^23.10.1",
+    "ts-node": "^7.0.1",
+    "tslib": "^1.9.3"
+  }
+}

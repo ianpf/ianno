@@ -1,23 +1,31 @@
-import * as React from 'react';
+import React, { Component } from 'react';
+// import logo from './logo.svg';
 import './App.css';
 
-import { ValidationErrors } from '@ianno/react-extensions';
-import { NotBlankRule, RegexMatchingRule } from '@ianno/validation';
-import logo from './logo.svg';
+import {ValidationErrors} from '@ianno/react-extensions';
+import {NotBlankRule} from '@ianno/validation';
 
-class App extends React.Component {
-  public render() {
-    const rules = [new NotBlankRule(), new RegexMatchingRule(/abc/, 'must match regex /abc/')];
+class App extends Component {
+  render() {
+    const rule = [new NotBlankRule()];
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          {/* <img src={logo} className="App-logo" alt="logo" /> */}
+          <p>
+            Edit <code>src/App.tsx</code> and save to reload.
+          </p>
+
+          <ValidationErrors value={''} validation={[new NotBlankRule()]} />
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <ValidationErrors value={''} validation={rules}/>
       </div>
     );
   }
