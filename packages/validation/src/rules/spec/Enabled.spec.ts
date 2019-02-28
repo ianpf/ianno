@@ -7,7 +7,7 @@ describe(Enabled, () => {
   const enabledNotBlank = new Enabled(new NotBlankRule(), async () => true);
 
   describe('returns valid when', () => {
-    it('an invalid value but the rule is disabled', async () => {
+    it('an invalid value and the rule is disabled', async () => {
       expect(await disabledNotBlank.evaluate('', 'notBlankField'))
         .toEqual([]);
     });

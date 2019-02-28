@@ -45,7 +45,7 @@ describe('The annotations should', () => {
       new FieldValidationMetadata(GuineaPig.name, 'validModel', GuineaPig, new ValidModelRule('Must be a guinea pig')),
     );
     expect(validation).toContainEqual(
-      new FieldValidationMetadata(GuineaPig.name, 'regexField', String, new RegexMatchingRule(/abc/, 'test')),
+      new FieldValidationMetadata(GuineaPig.name, 'regexField', String, new RegexMatchingRule('test', /abc/)),
     );
     expect(validation).toContainEqual(
       new FieldValidationMetadata(GuineaPig.name, '1', String, new NotBlankRule()),

@@ -2,7 +2,7 @@ import { ValidationRule } from './ValidationRule';
 import { ValidationResult } from '../ValidationResult';
 
 export class RegexMatchingRule extends ValidationRule {
-    constructor(protected regex: RegExp, public message: string) {
+    constructor(public message: string, protected regex: RegExp) {
         super(message);
     }
 
