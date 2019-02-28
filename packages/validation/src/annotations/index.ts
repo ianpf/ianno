@@ -1,4 +1,4 @@
-export * from './IsEmail';
+export {IsEmail} from './IsEmail';
 export * from './IsNotBlank';
 export * from './IsOneOf';
 export * from './MatchesRegex';

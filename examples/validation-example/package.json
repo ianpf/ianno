@@ -1,32 +1,17 @@
 {
   "name": "validation-example",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@ianno/react-extensions": "file:../../packages/react-extensions",
-    "@ianno/validation": "file:../../packages/validation",
-    "@types/jest": "24.0.6",
-    "@types/node": "11.9.4",
-    "@types/react": "16.8.3",
-    "@types/react-dom": "16.8.2",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "react-scripts": "2.1.5",
-    "typescript": "3.3.3"
-  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ianno/validation": "file:../../packages/validation",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3333"
+  }
 }

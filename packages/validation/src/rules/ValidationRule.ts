@@ -1,5 +1,4 @@
 import { Model } from '../common/Model';
-
 import { ValidationResult } from '../ValidationResult';
 
 export abstract class ValidationRule {

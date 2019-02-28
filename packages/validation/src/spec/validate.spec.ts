@@ -1,3 +1,4 @@
+import 'jest';
 import { ValidationRule } from '../rules';
 import { ValidationResult } from '../ValidationResult';
 import { Validate, IsNotBlank } from '../annotations';
