@@ -2,7 +2,7 @@ import { Model } from '../common/Model';
 import { ValidationResult } from '../ValidationResult';
 
 export abstract class ValidationRule {
-    constructor(protected message: string) {}
+    constructor(public message: string) {}
     public abstract async evaluate(
         value: unknown,
         fieldName: string,

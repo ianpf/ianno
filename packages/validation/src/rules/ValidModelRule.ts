@@ -7,7 +7,7 @@ import { validate } from '../validate';
 import { ValidationResults } from '../ValidationResults';
 
 export class ValidModelRule extends ValidationRule {
-    constructor(protected message: string, private type?: Function) {
+    constructor(public message: string, private type?: Function) {
         super(message);
     }
 
