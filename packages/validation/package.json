@@ -4,10 +4,15 @@
   "description": "",
   "main": "dst/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Ian Fisher <ian.p.fisher@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianpf/ianno.git"
+  },
   "dependencies": {
     "@babel/core": "^7.3.3",
     "@types/jest": "^24.0.6",
