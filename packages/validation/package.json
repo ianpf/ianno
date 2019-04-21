@@ -5,7 +5,8 @@
   "main": "dst/index.js",
   "scripts": {
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "build": "tsc"
   },
   "author": "Ian Fisher <ian.p.fisher@gmail.com>",
   "license": "MIT",
